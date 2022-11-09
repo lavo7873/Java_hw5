@@ -1,4 +1,4 @@
-
+package com.example;
 public class Hexagon extends Shape {
 
 		private double sideLength;

@@ -1,5 +1,5 @@
 /**
- * @author vuaivantrinhsjgmail.com
+ * @author linhuang1101@gmail.com
  * HW 5
  * Exercise 1
  * Define and implement class Shapes. 
@@ -11,7 +11,7 @@
  *  members of shapeList 
  * 
  */
-
+package com.example;
 import java.util.ArrayList;
 
 public class Shapes {

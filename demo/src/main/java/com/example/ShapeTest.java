@@ -3,6 +3,7 @@
  *  This class should implement main(). In the body of the main() method
  *   instantiate an object of Shapes
 */
+package com.example;
 import java.util.ArrayList;
 
 public class ShapeTest {
