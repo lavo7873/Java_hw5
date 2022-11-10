@@ -1,5 +1,6 @@
-//LE NGOC QUYEN NGUYEN
+// Lam Vinh Vong
 
+package com.example;
 public class Triangle extends Shape{
     // data field
     private double side1, side2, side3;

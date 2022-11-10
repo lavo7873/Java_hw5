@@ -1,5 +1,6 @@
-//LE NGOC QUYEN NGUYEN
+// Lam Vinh Vong
 
+package com.example;
 public class Hexagon extends Shape{
     // data field
     private double side;

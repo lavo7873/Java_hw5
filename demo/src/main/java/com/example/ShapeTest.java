@@ -1,5 +1,6 @@
-//LE NGOC QUYEN NGUYEN
+// Lam Vinh Vong
 
+package com.example;
 import java.util.*;
 public class ShapeTest {
     public static void main(String[] args) {

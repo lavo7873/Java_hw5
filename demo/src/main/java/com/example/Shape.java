@@ -1,5 +1,6 @@
-//LE NGOC QUYEN NGUYEN
+// Lam Vinh Vong
 
+package com.example;
 import java.lang.*;
 
 public abstract class Shape implements Runnable {

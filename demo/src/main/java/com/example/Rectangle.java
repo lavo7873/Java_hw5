@@ -1,5 +1,6 @@
-//LE NGOC QUYEN NGUYEN
+// Lam Vinh Vong
 
+package com.example;
 public class Rectangle extends Shape{
     // data field
     private double width, height;
