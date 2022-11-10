@@ -1,31 +1,32 @@
-package com.example;
-public class Hexagon extends Shape {
+//LE NGOC QUYEN NGUYEN
 
-		private double sideLength;
-		
-		   public Hexagon(double sideLength) {
-		        super("Hexagon");
-		        this.sideLength = sideLength;
-		    }
+public class Hexagon extends Shape{
+    // data field
+    private double side;
 
-		    public double getSide() {
-		        return sideLength;
-		    }
+    // constructor
+    Hexagon(String type, double side) {
+        super(type);
+        this.side = side;
+    }
 
-		    public void setSide(double sideLength) {
-		        this.sideLength = sideLength;
-		    }
+    // getters and setters
+    public double getSide() {
+        return side;
+    }
 
-		    @Override
-		    synchronized public double computeArea() {
-		        return (3 * Math.sqrt(3)  * Math.pow(sideLength, 2)) / 2;
-		    }
+    public void setSide(double side) {
+        this.side = side;
+    }
 
-		    @Override
-		    public String toString() {
-		        return super.toString() +  "\nSide length = " + sideLength+ ".\n" ;
-		    }
-		
-		
+    @Override
+    public double computeArea() {
+        setArea(3 * Math.sqrt(3) * Math.pow(getSide(), 2) / 2);
+        return getArea();
+    }
 
+    @Override
+    public String toString() {
+        return "\n" + super.toString() + "\nSide of the hexagon: " + getSide() + "\nArea of the hexagon: " + computeArea();
+    }
 }

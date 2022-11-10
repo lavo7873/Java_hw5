@@ -1,79 +1,76 @@
-/**
- * @author linhuang1101@gmail.com
- * HW 5
- * Exercise 1
- * Define and implement class Shapes. 
- * This class should have a private ArrayList attribute Named shapeList. 
- * implement a getter and a setter for shapeList
- * using methods add() and remove()
- * synchronized public method called compute()
- *  in which you iterate through the 
- *  members of shapeList 
- * 
- */
-package com.example;
-import java.util.ArrayList;
+//LE NGOC QUYEN NGUYEN
 
-public class Shapes {
-	
-    private ArrayList<Shape> shapeList;     
+import java.util.*;
+import java.lang.*;
 
+public class Shapes<T extends Shape> extends Thread{
+    // data field
+    private ArrayList<T> shapeList;
 
-	public Shapes() {
+    // constructor
+    public Shapes() {
+        this.shapeList = new ArrayList<>();
+    }
+    public Shapes(ArrayList<T> shapeList) {
+        this.shapeList = shapeList;
+    }
+
+    // getters and setters
+    public ArrayList<T> getShapeList() {
+        return shapeList;
+    }
+
+    public void setShapeList(ArrayList<T> shapeList) {
+        this.shapeList = shapeList;
+    }
+
+    // add method
+    public void add(T shape) {
+        this.shapeList.add(shape);
+    }
+
+    // remove method
+    public void remove(T shape) {
+        this.shapeList.remove(shape);
+    }
+
+    synchronized public void compute() {
+        for (T shape: shapeList) {
+            Thread thread = new Thread(shape);
+            thread.start();
+            // System.out.println(shape.toString());
+        }
+    }
+
+    public void run() {
+		try {
+			this.compute();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+
 	}
-		// TODO Auto-generated constructor stub
 
+    // max method
+    public Shape max() {
+        Shape max = shapeList.get(0);
+        for (int i = 1; i < shapeList.size(); i++) {
+            if (shapeList.get(i).getArea() > max.getArea()) {
+                max = shapeList.get(i);
+            }
+        }
+        return max;
+    }
 
-    public Shapes(ArrayList<Shape> list) {
-        this.shapeList = list;
-    }	
-	
+    // min method
+    public Shape min() {
+        Shape min = shapeList.get(0);
+        for (int i = 1; i < shapeList.size(); i++) {
+            if (shapeList.get(i).getArea() < min.getArea()) {
+                min = shapeList.get(i);
+            }
+        }
+        return min;
+    }
 
-
-	public ArrayList<Shape> getShapeList() {
-		return shapeList;
-	}
-
-
-	public void setShapeList(ArrayList<Shape> shapeList) {
-		this.shapeList = shapeList;
-	}
-	 public void add(Shape e) {
-	        shapeList.add(e);
-	    }
-
-	    public void remove(Shape e) {
-	        shapeList.remove(e);
-	    }
-	    
-	 
-
-	    synchronized public void compute() {
-	        for (Shape e : shapeList) {
-	            System.out.printf("Shape %s, area %5.2f\n", e.getShapeName(), e.computeArea());
-	        }
-	    }
-	    public void max() {
-	        Shape maxShape = new Shape();
-	        double maxArea = shapeList.get(0).computeArea();
-	        for (Shape s : shapeList) {
-	            if (s.computeArea() > maxArea) {
-	                maxArea = s.computeArea();
-	                maxShape = s;
-	            }
-	        }
-	        System.out.println("--The Maximum Area--\n" + maxShape.toString() + "Max area = " + maxArea);
-	    }
-
-	    public void min() {
-	        Shape minShape = new Shape();
-	        double minArea = shapeList.get(0).computeArea();
-	        for (Shape s : shapeList) {
-	            if (s.computeArea() < minArea) {
-	                minArea = s.computeArea();
-	                minShape = s;
-	            }
-	        }
-	        System.out.println("--The Minimim Area:--\n" + minShape.toString() + "Min area " + minArea);
-	    }
-	}
+}

@@ -1,57 +1,43 @@
-/**
- * Define and implement class ShapeTest.
- *  This class should implement main(). In the body of the main() method
- *   instantiate an object of Shapes
-*/
-package com.example;
-import java.util.ArrayList;
+//LE NGOC QUYEN NGUYEN
 
+import java.util.*;
 public class ShapeTest {
+    public static void main(String[] args) {
+        Triangle triangle1 = new Triangle("Triangle", 3, 4, 5);
+        Triangle triangle2 = new Triangle("Triangle", 4, 7, 5);
 
-	public static void main(String[] args) {
-        ArrayList<Shape> shapeList = new ArrayList<>();
-        Shapes shapes = new Shapes(shapeList);
+        Circle circle1 = new Circle("Circle", 3);
+        Circle circle2 = new Circle("Circle", 5);
 
-        Shape s1 = new Circle(30);
-        Shape s2 = new Circle(10);
-        Shape s3 = new Triangle(8, 8, 8);
-        Shape s4 = new Triangle(3, 4, 5);
-        Shape s5 = new Rectangle(12, 16);
-        Shape s6 = new Rectangle(7, 9);
-        Shape s7 = new Hexagon(8.5);
-        Shape s8 = new Hexagon(16);
+        Rectangle rectangle1 = new Rectangle("Rectangle", 7, 5);
+        Rectangle rectangle2 = new Rectangle("Rectangle", 10, 3);
 
-        shapeList.add(s1);
-        shapeList.add(s2);
-        shapeList.add(s3);
-        shapeList.add(s4);
-        shapeList.add(s5);
-        shapeList.add(s6);
-        shapeList.add(s7);
-        shapeList.add(s8);
-        
-       
+        Hexagon hexagon1 = new Hexagon("Hexagon", 5);
+        Hexagon hexagon2 = new Hexagon("Hexagon", 6);
 
-        new Thread() {
-    		public void run() {
-    		      shapes.compute();
-    		   }
-    		}.start();
+        Shapes<Shape> shapes = new Shapes<Shape>();
+        shapes.add(triangle1);
+        shapes.add(triangle2);
+        shapes.add(circle1);
+        shapes.add(circle2);
+        shapes.add(rectangle1);
+        shapes.add(rectangle2);
+        shapes.add(hexagon1);
+        shapes.add(hexagon2);
 
-    		new Thread() {
-    		public void run() {
-    		      shapes.compute();
-    		   }
-    		}.start();
-    	
 
-    		
-        // call max() min() to find the biggest and smallest area value.
-        shapes.max();
-        shapes.min();
+        Thread thread = new Thread(shapes);
+        thread.start();
+		
+		try {
+			thread.join();
+		}catch(Exception e) {
+			System.out.println(e);
+		}
 
+        System.out.println();
+		System.out.println("Shape with biggest area: " + shapes.max().toString());
+        System.out.println();
+		System.out.println("Shape with smallest area: " + shapes.min().toString());
     }
-
-	}
-
-
+}

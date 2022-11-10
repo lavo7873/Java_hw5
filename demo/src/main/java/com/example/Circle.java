@@ -1,15 +1,16 @@
-package com.example;
-public class Circle extends Shape   {
+//LE NGOC QUYEN NGUYEN
+
+public class Circle extends Shape{
+    // data field
     private double radius;
-    final private double PI = 3.14;
 
-
-
-    public Circle(double radius) {
-        super("Circle");
+    // constructor
+    Circle(String type, double radius) {
+        super(type);
         this.radius = radius;
     }
 
+    // getters and setters
     public double getRadius() {
         return radius;
     }
@@ -18,12 +19,14 @@ public class Circle extends Shape   {
         this.radius = radius;
     }
 
-    synchronized public double computeArea() {
-        return radius * PI;
+    @Override
+    public double computeArea() {
+        setArea(Math.pow(getRadius(), 2) * Math.PI);
+        return getArea();
     }
 
+    @Override
     public String toString() {
-        return super.toString() + "\nRadius = " + radius + ".\n";
+        return "\n" + super.toString() + "\nRadius of the circle: " + getRadius() + "\nArea of the circle: " + computeArea();
     }
-
 }

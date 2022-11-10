@@ -1,29 +1,44 @@
-package com.example;
-public class Shape {
-	
-	private String shapeName;
-	
+//LE NGOC QUYEN NGUYEN
 
-    public Shape() {
-    }
-	
-	Shape(String shapeName){
-		this.shapeName = shapeName;
-		
-	}
+import java.lang.*;
 
-	public String getShapeName() {
-		return shapeName;
+public abstract class Shape implements Runnable {
+	// data field
+	private String type;
+	private double area;
+
+	// constructor
+	public Shape(String type) {
+		this.type = type;
 	}
 
-	public void setShapeName(String shapeName) {
-		this.shapeName = shapeName;
+	// getters and setters
+	public String getType() {
+		return type;
 	}
-	synchronized public double computeArea() {
-		return 0;
+
+	public void setType(String type) {
+		this.type = type;
 	}
-	
+
+	public double getArea() {
+		return area;
+	}
+
+	public void setArea(double area) {
+		this.area = area;
+	}
+
+	public double computeArea() {
+		return getArea();
+	}
+
+	public void run() {
+		System.out.println(getType() + "\nArea: " + computeArea() + "\n");
+	}
+
+	@Override
 	public String toString(){
-		return "Shape: " + shapeName ;
-}
+		return getType();
+	}
 }

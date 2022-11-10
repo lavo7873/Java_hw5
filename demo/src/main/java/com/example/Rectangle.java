@@ -1,49 +1,41 @@
-/**
- * 
- * @author vuaivantrinhsjgmail.com
- * HW5
- * Exercise 1 
- * Design and implement a class hierarchy to represent the following 2-D shapes:
- * triangle, circle, rectangle, and hexagon.
- * all these s shapes are descendants
- * each class needs to have getters and setters defined and 
- * implemented for all the attributes. Each leaf shape class (triangle, circle, rectangle, hexagon) 
- * should have computeArea() method implemented.
- */
-package com.example;
-public class Rectangle extends Shape {
-	private double width;
-    private double length;
-    
-    Rectangle(double width, double length) {
-        super("Rectangle");
-        this.setWidth(width);
-        this.setLength(length);
+//LE NGOC QUYEN NGUYEN
+
+public class Rectangle extends Shape{
+    // data field
+    private double width, height;
+
+    // constructor
+    Rectangle(String type, double width, double height) {
+        super(type);
+        this.height = height;
+        this.width = width;
     }
 
-	public double getWidth() {
-		return width;
-	}
+    // getters and setters
+    public double getWidth() {
+        return width;
+    }
 
-	public void setWidth(double width) {
-		this.width = width;
-	}
+    public void setWidth(double width) {
+        this.width = width;
+    }
 
-	public double getLength() {
-		return length;
-	}
+    public double getHeight() {
+        return height;
+    }
 
-	public void setLength(double length) {
-		this.length = length;
-	}
-	 public double computeArea() {
-	        return width * length;
-	    }
+    public void setHeight(double height) {
+        this.height = height;
+    }
 
-	    public String toString() {
-	        return super.toString() +
-	                "\nWidth=" + width + "\nlength=" + length + ".\n";
-	    }
-	    
+    @Override
+    public double computeArea() {
+        setArea(getHeight() * getWidth());
+        return getArea();
+    }
 
+    @Override
+    public String toString() {
+        return "\n" + super.toString() + "\nWidth and height of the rectangle: " + getWidth() + ", " + getHeight() + "\nArea of the rectangle: " + computeArea();
+    }
 }

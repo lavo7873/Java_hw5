@@ -1,20 +1,21 @@
-package com.example;
-public class Triangle extends Shape {
-    private double side1;
-    private double side2;
-    private double side3;
+//LE NGOC QUYEN NGUYEN
 
-    public Triangle(double side1, double side2, double side3) {
-        super("Triangle");
+public class Triangle extends Shape{
+    // data field
+    private double side1, side2, side3;
+
+    // constructor
+    Triangle(String type, double side1, double side2, double side3) {
+        super(type);
         this.side1 = side1;
         this.side2 = side2;
         this.side3 = side3;
     }
 
+    // getters and setters
     public double getSide1() {
         return side1;
     }
-
     public void setSide1(double side1) {
         this.side1 = side1;
     }
@@ -35,13 +36,16 @@ public class Triangle extends Shape {
         this.side3 = side3;
     }
 
-    synchronized public double computeArea() {
-        double s = (side1 + side2 + side3) / 2;
-        return Math.sqrt(s * (s - side1) * (s - side2) * (s - side3));
+    // compute area
+    @Override
+    public double computeArea() {
+        double halfPerimeter = (getSide1() + getSide2() + getSide3()) / 2;
+        setArea(Math.sqrt(halfPerimeter * (halfPerimeter - getSide1()) * (halfPerimeter - getSide2()) * (halfPerimeter - getSide3())));
+        return getArea();
     }
 
+    @Override
     public String toString() {
-        return super.toString() + "\nSide 1 = " + side1 + ", Side2 = " + side2 + ", Side3 = " + side3 + ".\n";
+        return "\n" + super.toString() + "\nLengths of the triangle are: " + getSide1() + ", " + getSide2() + ", " + getSide3() + "\nArea of the triangle: " + computeArea(); 
     }
-
 }
