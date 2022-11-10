@@ -10,6 +10,7 @@
  * implemented for all the attributes. Each leaf shape class (triangle, circle, rectangle, hexagon) 
  * should have computeArea() method implemented.
  */
+package com.example;
 public class Rectangle extends Shape {
 	private double width;
     private double length;
